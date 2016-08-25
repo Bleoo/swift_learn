@@ -9,10 +9,12 @@
 import UIKit
 
 var contacts = [Contact]()
+var filterContacts = [Contact]()
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var isModify = false
     
@@ -33,7 +35,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        }
     }
     
-    func getIsModify(isModify: Bool) -> Void {
+    func modifyCallback() -> Void {
         print("test delegate")
         tableView.reloadData()
     }
@@ -76,12 +78,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.setEditing(editing, animated: animated)
     }
     
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return editing
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let tempContact = contacts.removeAtIndex(sourceIndexPath.row)
+        contacts.insert(tempContact, atIndex: destinationIndexPath.row)
+    }
+    
     // Segue跳转调用此处，用于传递参数
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "newContact" {
             let newContactVC = segue.destinationViewController as! NewContactVC
             newContactVC.delegate = self
         }
+    }
+    
+    // !自定义!的返回回调方法，在Storyboard上对按钮和exit进行绑定时可以选择该方法进行回调
+    @IBAction func backForSegue(segue: UIStoryboardSegue){
+        print("backForSegue")
+        tableView.reloadData()
     }
     
 }

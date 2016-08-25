@@ -9,12 +9,12 @@
 import UIKit
 
 public protocol BDelegate {
-    func getIsModify(isModify: Bool) -> Void
+    func modifyCallback() -> Void
 }
 
 typealias TestBlock = (String)->()
 
-class NewContactVC: UIViewController {
+class NewContactVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
@@ -25,12 +25,26 @@ class NewContactVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        nameTF.delegate = self
+        phoneTF.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // UITextFieldDelegate中代理方法,用于响应右下角的return键
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //触摸事件的结束方法
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        nameTF.resignFirstResponder()
+        phoneTF.resignFirstResponder()
     }
 
     @IBAction func saveNewContact(sender: AnyObject) {
@@ -56,7 +70,9 @@ class NewContactVC: UIViewController {
         //mainVC.isModify = true
         
         // 代理及block都属于回调，代理类似接口，而block类似方法块
-        self.delegate?.getIsModify(true)
+        self.delegate?.modifyCallback()
+        
+        // 通过navigationController进行返回
         self.navigationController?.popViewControllerAnimated(true)
     }
 }
