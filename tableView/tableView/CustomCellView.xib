@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,26 +14,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="384" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="doe-cu-rCf">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="doe-cu-rCf">
                         <rect key="frame" x="8" y="8" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="VTU-vy-ZLI"/>
+                            <constraint firstAttribute="width" constant="60" id="Wam-wb-U6L"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="yvd-t1-or1"/>
+                        </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9GR-Kf-fcT">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9GR-Kf-fcT">
                         <rect key="frame" x="76" y="8" width="46" height="30"/>
                         <state key="normal" title="Button"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbJ-nl-gw4">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbJ-nl-gw4">
                         <rect key="frame" x="130" y="12" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaM-22-T0o">
-                        <rect key="frame" x="76" y="46" width="300" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaM-22-T0o">
+                        <rect key="frame" x="76" y="41" width="300" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="9GR-Kf-fcT" firstAttribute="leading" secondItem="doe-cu-rCf" secondAttribute="trailing" constant="8" id="5pm-UZ-TWh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="PaM-22-T0o" secondAttribute="bottom" constant="7" id="HaV-Hb-P0y"/>
+                    <constraint firstItem="9GR-Kf-fcT" firstAttribute="top" secondItem="doe-cu-rCf" secondAttribute="top" id="Puw-ow-UD9"/>
+                    <constraint firstItem="PaM-22-T0o" firstAttribute="top" secondItem="9GR-Kf-fcT" secondAttribute="bottom" constant="3" id="R7N-BM-rta"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="doe-cu-rCf" secondAttribute="leading" id="WvT-0x-Jl7"/>
+                    <constraint firstItem="doe-cu-rCf" firstAttribute="centerY" secondItem="VIV-u4-RZ7" secondAttribute="centerY" id="ZuO-sv-4k7"/>
+                    <constraint firstItem="PaM-22-T0o" firstAttribute="leading" secondItem="doe-cu-rCf" secondAttribute="trailing" constant="8" id="aoQ-ka-GKo"/>
+                    <constraint firstItem="9GR-Kf-fcT" firstAttribute="baseline" secondItem="bbJ-nl-gw4" secondAttribute="baseline" id="bur-1A-ZCP"/>
+                    <constraint firstItem="bbJ-nl-gw4" firstAttribute="leading" secondItem="9GR-Kf-fcT" secondAttribute="trailing" constant="8" id="fST-KS-Anw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PaM-22-T0o" secondAttribute="trailing" id="hHS-mk-yAk"/>
+                    <constraint firstItem="doe-cu-rCf" firstAttribute="centerY" secondItem="VIV-u4-RZ7" secondAttribute="centerY" id="iqy-hH-ALt"/>
+                    <constraint firstAttribute="topMargin" secondItem="doe-cu-rCf" secondAttribute="top" id="qVY-SI-79p"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="ZuO-sv-4k7"/>
+                        <exclude reference="iqy-hH-ALt"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cButton" destination="9GR-Kf-fcT" id="eCn-Ko-apg"/>
