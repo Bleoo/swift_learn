@@ -8,11 +8,25 @@
 
 import UIKit
 
+struct Weather {
+    var city: String?
+    var weather: String?
+    var temp: String?
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var lb_city: UILabel!
     @IBOutlet weak var lb_weather: UILabel!
     @IBOutlet weak var lb_temperature: UILabel!
+    
+    var weather: Weather? {
+        didSet{
+            self.lb_city.text = weather?.city
+            self.lb_weather.text = weather?.weather
+            self.lb_temperature.text = weather?.temp
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +38,7 @@ class ViewController: UIViewController {
         // String转URL编码
         let city = "深圳".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         // NSURL的参数String中不能包含中文或者空格等,否则url会为nil
-        let url = NSURL(string: "http://apis.baidu.com/apistore/weatherservice/citylist?cityname=\(city!)")
+        let url = NSURL(string: "http://apis.baidu.com/apistore/weatherservice/cityname?cityname=\(city!)")
         // 创建请求
         let request = NSMutableURLRequest(URL: url!)
         // 请求方式
@@ -41,7 +55,13 @@ class ViewController: UIViewController {
                 do {
                     // JSON数据解析为NSDictionary
                     if let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary{
-                        print(json)
+                        if let retData = json.objectForKey("retData") as? NSDictionary {
+                            let weat = retData.objectForKey("weather") as? String
+                            let temp = retData.objectForKey("temp") as? String
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.weather = Weather(city: "深圳", weather: weat, temp: temp)
+                            })
+                        }
                     }
                 }
             }
