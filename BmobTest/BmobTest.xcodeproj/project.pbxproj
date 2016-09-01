@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0F079C1D768242007C461D /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F079B1D768242007C461D /* Diary.swift */; settings = {ASSET_TAGS = (); }; };
+		7B0F079E1D768806007C461D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F079D1D768806007C461D /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		7B0F07A01D768A3C007C461D /* DiaryBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F079F1D768A3C007C461D /* DiaryBook.swift */; settings = {ASSET_TAGS = (); }; };
+		7B0F07A21D768C78007C461D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F07A11D768C78007C461D /* Comment.swift */; settings = {ASSET_TAGS = (); }; };
 		7B5DFCF11D75864B00DF9BCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DFCF01D75864B00DF9BCC /* AppDelegate.swift */; };
-		7B5DFCF31D75864B00DF9BCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DFCF21D75864B00DF9BCC /* ViewController.swift */; };
+		7B5DFCF31D75864B00DF9BCC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DFCF21D75864B00DF9BCC /* HomeVC.swift */; };
 		7B5DFCF61D75864B00DF9BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5DFCF41D75864B00DF9BCC /* Main.storyboard */; };
 		7B5DFCF81D75864B00DF9BCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5DFCF71D75864B00DF9BCC /* Assets.xcassets */; };
 		7B5DFCFB1D75864B00DF9BCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5DFCF91D75864B00DF9BCC /* LaunchScreen.storyboard */; };
@@ -23,12 +27,18 @@
 		7B5DFD1A1D758ADB00DF9BCC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DFD101D758ADA00DF9BCC /* MobileCoreServices.framework */; };
 		7B5DFD1B1D758ADB00DF9BCC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DFD111D758ADB00DF9BCC /* Security.framework */; };
 		7B5DFD1C1D758ADB00DF9BCC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DFD121D758ADB00DF9BCC /* SystemConfiguration.framework */; };
+		7BE7BD461D78203D00CA5B05 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */; settings = {ASSET_TAGS = (); }; };
+		7BE7BD4A1D78240F00CA5B05 /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B0F079B1D768242007C461D /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		7B0F079D1D768806007C461D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7B0F079F1D768A3C007C461D /* DiaryBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryBook.swift; sourceTree = "<group>"; };
+		7B0F07A11D768C78007C461D /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		7B5DFCED1D75864B00DF9BCC /* BmobTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BmobTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5DFCF01D75864B00DF9BCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B5DFCF21D75864B00DF9BCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7B5DFCF21D75864B00DF9BCC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7B5DFCF51D75864B00DF9BCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B5DFCF71D75864B00DF9BCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B5DFCFA1D75864B00DF9BCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +55,8 @@
 		7B5DFD101D758ADA00DF9BCC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7B5DFD111D758ADB00DF9BCC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7B5DFD121D758ADB00DF9BCC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +81,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B0F079A1D768206007C461D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B0F079B1D768242007C461D /* Diary.swift */,
+				7B0F079D1D768806007C461D /* User.swift */,
+				7B0F079F1D768A3C007C461D /* DiaryBook.swift */,
+				7B0F07A11D768C78007C461D /* Comment.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7B0F07A31D76AEB4007C461D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B5DFCF21D75864B00DF9BCC /* HomeVC.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		7B5DFCE41D75864B00DF9BCC = {
 			isa = PBXGroup;
 			children = (
@@ -98,16 +129,27 @@
 		7B5DFCEF1D75864B00DF9BCC /* BmobTest */ = {
 			isa = PBXGroup;
 			children = (
+				7BE7BD441D78200F00CA5B05 /* Veiw */,
+				7B0F07A31D76AEB4007C461D /* ViewController */,
+				7B0F079A1D768206007C461D /* Model */,
 				7B5DFCF01D75864B00DF9BCC /* AppDelegate.swift */,
-				7B5DFCF21D75864B00DF9BCC /* ViewController.swift */,
 				7B5DFCF41D75864B00DF9BCC /* Main.storyboard */,
 				7B5DFCF71D75864B00DF9BCC /* Assets.xcassets */,
 				7B5DFCF91D75864B00DF9BCC /* LaunchScreen.storyboard */,
 				7B5DFCFC1D75864B00DF9BCC /* Info.plist */,
 				7B5DFD041D7586AF00DF9BCC /* BmobTest-Bridging-Header.h */,
 				7B5DFD071D7588E800DF9BCC /* BmobSDK.framework */,
+				7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */,
 			);
 			path = BmobTest;
+			sourceTree = "<group>";
+		};
+		7BE7BD441D78200F00CA5B05 /* Veiw */ = {
+			isa = PBXGroup;
+			children = (
+				7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */,
+			);
+			name = Veiw;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +213,7 @@
 				7B5DFCFB1D75864B00DF9BCC /* LaunchScreen.storyboard in Resources */,
 				7B5DFCF81D75864B00DF9BCC /* Assets.xcassets in Resources */,
 				7B5DFCF61D75864B00DF9BCC /* Main.storyboard in Resources */,
+				7BE7BD4A1D78240F00CA5B05 /* DiaryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,8 +224,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B5DFCF31D75864B00DF9BCC /* ViewController.swift in Sources */,
+				7B0F079E1D768806007C461D /* User.swift in Sources */,
+				7BE7BD461D78203D00CA5B05 /* DiaryCell.swift in Sources */,
+				7B0F07A21D768C78007C461D /* Comment.swift in Sources */,
+				7B0F07A01D768A3C007C461D /* DiaryBook.swift in Sources */,
+				7B5DFCF31D75864B00DF9BCC /* HomeVC.swift in Sources */,
 				7B5DFCF11D75864B00DF9BCC /* AppDelegate.swift in Sources */,
+				7B0F079C1D768242007C461D /* Diary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +391,7 @@
 				7B5DFD011D75864B00DF9BCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
