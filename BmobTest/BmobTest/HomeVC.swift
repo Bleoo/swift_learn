@@ -20,7 +20,10 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "松开以刷新")
+        //背景色和tint颜色都要清除,保证自定义下拉视图高度自适应
+//        refreshControl.backgroundColor = UIColor.clearColor()
+//        refreshControl.tintColor = UIColor.clearColor()
+        refreshControl.attributedTitle = NSAttributedString(string: "最后更新于\(NSDate())")
         diarys_tv.addSubview(refreshControl)
         
         dateFormatter.locale = NSLocale.currentLocale()
@@ -65,6 +68,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print(indexPath.row)
         var cell = tableView.dequeueReusableCellWithIdentifier("DiaryCell") as? DiaryCell
         if cell == nil {
             cell = DiaryCell(style: .Default, reuseIdentifier: "DiaryCell")
@@ -74,6 +78,21 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell?.book_btn.setTitle(diary.book?.subject, forState: UIControlState.Normal)
         cell?.time_lab.text = dateFormatter.stringFromDate(diary.createdAt)
         cell?.content_lab.text = diary.content
+        
+        if let url = diary.user?.icon?.url {
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            // 切到全局队列,这是系统提供的并行队列
+            dispatch_async(queue, { () -> Void in
+                if let nsUrl = NSURL(string: url){
+                    if let img = NSData(contentsOfURL: nsUrl) {
+                        // 切回主队列
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            cell?.icon_img.image = UIImage(data: img)
+                        })
+                    }
+                }
+            })
+        }
         return cell!
     }
     
