@@ -15,8 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         Bmob.registerWithAppKey("226997be739c67a681a363f4d7e10aef")
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.backgroundColor = UIColor.whiteColor()
+        
+        let tabbarController = UITabBarController()
+        window?.rootViewController = tabbarController
+        
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeVC = mainSB.instantiateViewControllerWithIdentifier("HomeSB") as! HomeVC
+        let homeNav = UINavigationController(rootViewController: homeVC)
+        homeNav.tabBarItem.title = "Home"
+        tabbarController.addChildViewController(homeNav)
+        
+        let userVC = mainSB.instantiateViewControllerWithIdentifier("UserSB") as! UserVC
+        let userNav = UINavigationController(rootViewController: userVC)
+        userNav.tabBarItem.title = "User"
+        tabbarController.addChildViewController(userNav)
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

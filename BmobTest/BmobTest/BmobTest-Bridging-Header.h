@@ -3,3 +3,4 @@
 //
 
 #import <BmobSDK/Bmob.h>
+#import <CommonCrypto/CommonDigest.h>

@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "4Qd-t8-SGx"; */
+"4Qd-t8-SGx.normalTitle" = "Login";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "FOt-VD-4CA"; */
+"FOt-VD-4CA.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "S2i-6m-a7g"; */
+"S2i-6m-a7g.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "jeO-ge-XgE"; */
+"jeO-ge-XgE.placeholder" = "Email";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "po8-tu-X44"; */
+"po8-tu-X44.title" = "Item";

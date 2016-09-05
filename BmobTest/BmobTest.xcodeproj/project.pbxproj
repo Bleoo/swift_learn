@@ -27,6 +27,9 @@
 		7B5DFD1A1D758ADB00DF9BCC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DFD101D758ADA00DF9BCC /* MobileCoreServices.framework */; };
 		7B5DFD1B1D758ADB00DF9BCC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DFD111D758ADB00DF9BCC /* Security.framework */; };
 		7B5DFD1C1D758ADB00DF9BCC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DFD121D758ADB00DF9BCC /* SystemConfiguration.framework */; };
+		7BBC28631D7D1EAB0043B586 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC28621D7D1EAB0043B586 /* LoginVC.swift */; settings = {ASSET_TAGS = (); }; };
+		7BBC28651D7D21DF0043B586 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC28641D7D21DF0043B586 /* UserVC.swift */; settings = {ASSET_TAGS = (); }; };
+		7BDB8FD81D7D7F2A00AC7005 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */; settings = {ASSET_TAGS = (); }; };
 		7BE7BD461D78203D00CA5B05 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */; settings = {ASSET_TAGS = (); }; };
 		7BE7BD4A1D78240F00CA5B05 /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -55,6 +58,9 @@
 		7B5DFD101D758ADA00DF9BCC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7B5DFD111D758ADB00DF9BCC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7B5DFD121D758ADB00DF9BCC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7BBC28621D7D1EAB0043B586 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		7BBC28641D7D21DF0043B586 /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
 		7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				7B5DFCF21D75864B00DF9BCC /* HomeVC.swift */,
+				7BBC28621D7D1EAB0043B586 /* LoginVC.swift */,
+				7BBC28641D7D21DF0043B586 /* UserVC.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				7B5DFD041D7586AF00DF9BCC /* BmobTest-Bridging-Header.h */,
 				7B5DFD071D7588E800DF9BCC /* BmobSDK.framework */,
 				7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */,
+				7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */,
 			);
 			path = BmobTest;
 			sourceTree = "<group>";
@@ -226,10 +235,13 @@
 			files = (
 				7B0F079E1D768806007C461D /* User.swift in Sources */,
 				7BE7BD461D78203D00CA5B05 /* DiaryCell.swift in Sources */,
+				7BBC28631D7D1EAB0043B586 /* LoginVC.swift in Sources */,
 				7B0F07A21D768C78007C461D /* Comment.swift in Sources */,
 				7B0F07A01D768A3C007C461D /* DiaryBook.swift in Sources */,
+				7BDB8FD81D7D7F2A00AC7005 /* Utils.swift in Sources */,
 				7B5DFCF31D75864B00DF9BCC /* HomeVC.swift in Sources */,
 				7B5DFCF11D75864B00DF9BCC /* AppDelegate.swift in Sources */,
+				7BBC28651D7D21DF0043B586 /* UserVC.swift in Sources */,
 				7B0F079C1D768242007C461D /* Diary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
