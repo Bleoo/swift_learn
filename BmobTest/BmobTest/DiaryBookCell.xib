@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiaryBook" id="Ojr-iD-hhQ" customClass="DiaryBookCell" customModule="BmobTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="137" height="157"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="137" height="157"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="hhS-qT-17w">
+                        <rect key="frame" x="8" y="8" width="120" height="120"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xu-JB-kd3">
+                        <rect key="frame" x="8" y="136" width="121" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="7rM-XZ-w3d"/>
+                            <constraint firstAttribute="height" constant="16" id="B4P-z7-PRZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="B4P-z7-PRZ"/>
+                            </mask>
+                        </variation>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="hhS-qT-17w" firstAttribute="top" secondItem="Ojr-iD-hhQ" secondAttribute="top" constant="8" id="FYZ-7X-TAv"/>
+                <constraint firstItem="1Xu-JB-kd3" firstAttribute="bottom" secondItem="Ojr-iD-hhQ" secondAttribute="bottomMargin" constant="-49" id="ICe-d7-Ab6"/>
+                <constraint firstItem="hhS-qT-17w" firstAttribute="leading" secondItem="Ojr-iD-hhQ" secondAttribute="leading" constant="8" id="JOz-s8-FZp"/>
+                <constraint firstItem="1Xu-JB-kd3" firstAttribute="leading" secondItem="Ojr-iD-hhQ" secondAttribute="leading" constant="8" id="MdI-XU-3Xl"/>
+                <constraint firstItem="1Xu-JB-kd3" firstAttribute="leading" secondItem="hhS-qT-17w" secondAttribute="leading" id="SeD-ee-9IY"/>
+                <constraint firstAttribute="trailing" secondItem="hhS-qT-17w" secondAttribute="trailing" constant="9" id="T9F-5f-J1f"/>
+                <constraint firstItem="1Xu-JB-kd3" firstAttribute="top" secondItem="hhS-qT-17w" secondAttribute="bottom" constant="57" id="fXq-oJ-ceA"/>
+                <constraint firstAttribute="bottom" secondItem="1Xu-JB-kd3" secondAttribute="bottom" constant="5" id="k0K-bX-NVD"/>
+                <constraint firstItem="1Xu-JB-kd3" firstAttribute="top" secondItem="hhS-qT-17w" secondAttribute="bottom" constant="8" id="mD0-Ji-nEb"/>
+                <constraint firstItem="1Xu-JB-kd3" firstAttribute="centerX" secondItem="hhS-qT-17w" secondAttribute="centerX" id="p7J-un-S64"/>
+            </constraints>
+            <size key="customSize" width="137" height="157"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ICe-d7-Ab6"/>
+                    <exclude reference="MdI-XU-3Xl"/>
+                    <exclude reference="fXq-oJ-ceA"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="bookPic_img" destination="hhS-qT-17w" id="B7f-yY-9oa"/>
+                <outlet property="subject_lab" destination="1Xu-JB-kd3" id="rd3-XW-oV4"/>
+            </connections>
+            <point key="canvasLocation" x="364.5" y="369.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="book" width="160" height="120"/>
+    </resources>
+</document>

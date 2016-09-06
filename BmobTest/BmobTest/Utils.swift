@@ -27,3 +27,14 @@ extension String  {
         return String(format: hash as String)
     }
 }
+
+class Utils: AnyObject {
+    
+    static let dateFormatter = NSDateFormatter()
+    
+    static func dateFormat(date: NSDate, format: String) -> String {
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateFormat = format
+        return dateFormatter.stringFromDate(date)
+    }
+}

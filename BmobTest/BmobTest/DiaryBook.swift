@@ -24,7 +24,7 @@ class DiaryBook: BmobObject {
         return diaryBook
     }
     
-    static func queryBooksByUserId(userId: String) -> [DiaryBook] {
+    static func queryBooksByUserId(userId: String, handler: ([DiaryBook], NSError!) -> ()) {
         var books = [DiaryBook]()
         //关联对象表
         let query = BmobQuery(className: "DiaryBook")
@@ -33,13 +33,14 @@ class DiaryBook: BmobObject {
         
         query.whereObjectKey("books", relatedTo: user)
         query.findObjectsInBackgroundWithBlock { (array, error) in
-            for obj in array {
-                let book = convert(obj as! BmobObject)
-                print("username \(book.objectId)")
-                books.append(book)
+            if error == nil {
+                for obj in array {
+                    let book = convert(obj as! BmobObject)
+                    books.append(book)
+                }
             }
+            handler(books, error)
         }
-        return books
     }
     
 }

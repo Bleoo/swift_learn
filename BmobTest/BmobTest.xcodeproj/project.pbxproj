@@ -32,6 +32,10 @@
 		7BDB8FD81D7D7F2A00AC7005 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */; settings = {ASSET_TAGS = (); }; };
 		7BE7BD461D78203D00CA5B05 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */; settings = {ASSET_TAGS = (); }; };
 		7BE7BD4A1D78240F00CA5B05 /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */; settings = {ASSET_TAGS = (); }; };
+		7BE9AC921D7E642C00CD9A02 /* DiaryBooksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AC911D7E642C00CD9A02 /* DiaryBooksVC.swift */; settings = {ASSET_TAGS = (); }; };
+		7BE9AC941D7E7BF000CD9A02 /* DiaryBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */; settings = {ASSET_TAGS = (); }; };
+		7BE9AC961D7E97DA00CD9A02 /* DiaryBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AC951D7E97DA00CD9A02 /* DiaryBookCell.swift */; settings = {ASSET_TAGS = (); }; };
+		7BE9AC981D7EBFB600CD9A02 /* CreateBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AC971D7EBFB600CD9A02 /* CreateBookVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,10 @@
 		7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
 		7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
+		7BE9AC911D7E642C00CD9A02 /* DiaryBooksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryBooksVC.swift; sourceTree = "<group>"; };
+		7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryBookCell.xib; sourceTree = "<group>"; };
+		7BE9AC951D7E97DA00CD9A02 /* DiaryBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryBookCell.swift; sourceTree = "<group>"; };
+		7BE9AC971D7EBFB600CD9A02 /* CreateBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBookVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,8 @@
 				7B5DFCF21D75864B00DF9BCC /* HomeVC.swift */,
 				7BBC28621D7D1EAB0043B586 /* LoginVC.swift */,
 				7BBC28641D7D21DF0043B586 /* UserVC.swift */,
+				7BE9AC911D7E642C00CD9A02 /* DiaryBooksVC.swift */,
+				7BE9AC971D7EBFB600CD9A02 /* CreateBookVC.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -149,6 +159,7 @@
 				7B5DFD071D7588E800DF9BCC /* BmobSDK.framework */,
 				7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */,
 				7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */,
+				7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */,
 			);
 			path = BmobTest;
 			sourceTree = "<group>";
@@ -157,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */,
+				7BE9AC951D7E97DA00CD9A02 /* DiaryBookCell.swift */,
 			);
 			name = Veiw;
 			sourceTree = "<group>";
@@ -220,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5DFCFB1D75864B00DF9BCC /* LaunchScreen.storyboard in Resources */,
+				7BE9AC941D7E7BF000CD9A02 /* DiaryBookCell.xib in Resources */,
 				7B5DFCF81D75864B00DF9BCC /* Assets.xcassets in Resources */,
 				7B5DFCF61D75864B00DF9BCC /* Main.storyboard in Resources */,
 				7BE7BD4A1D78240F00CA5B05 /* DiaryCell.xib in Resources */,
@@ -239,6 +252,9 @@
 				7B0F07A21D768C78007C461D /* Comment.swift in Sources */,
 				7B0F07A01D768A3C007C461D /* DiaryBook.swift in Sources */,
 				7BDB8FD81D7D7F2A00AC7005 /* Utils.swift in Sources */,
+				7BE9AC981D7EBFB600CD9A02 /* CreateBookVC.swift in Sources */,
+				7BE9AC961D7E97DA00CD9A02 /* DiaryBookCell.swift in Sources */,
+				7BE9AC921D7E642C00CD9A02 /* DiaryBooksVC.swift in Sources */,
 				7B5DFCF31D75864B00DF9BCC /* HomeVC.swift in Sources */,
 				7B5DFCF11D75864B00DF9BCC /* AppDelegate.swift in Sources */,
 				7BBC28651D7D21DF0043B586 /* UserVC.swift in Sources */,
