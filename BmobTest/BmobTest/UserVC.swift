@@ -126,7 +126,8 @@ class UserVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             presentViewController(logoutAlert!, animated: true, completion: nil)
         } else {
-            print("未登录")
+            let toast = ToastView(text: "未登录")
+            view.addSubview(toast)
         }
     }
     

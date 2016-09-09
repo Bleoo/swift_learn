@@ -36,6 +36,8 @@
 		7BE9AC941D7E7BF000CD9A02 /* DiaryBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */; settings = {ASSET_TAGS = (); }; };
 		7BE9AC961D7E97DA00CD9A02 /* DiaryBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AC951D7E97DA00CD9A02 /* DiaryBookCell.swift */; settings = {ASSET_TAGS = (); }; };
 		7BE9AC981D7EBFB600CD9A02 /* CreateBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AC971D7EBFB600CD9A02 /* CreateBookVC.swift */; settings = {ASSET_TAGS = (); }; };
+		7BEBD40E1D810B3F00916CD3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBD40D1D810B3F00916CD3 /* LoadingView.swift */; settings = {ASSET_TAGS = (); }; };
+		7BF4A07F1D8259C500C9B990 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4A07E1D8259C500C9B990 /* ToastView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryBookCell.xib; sourceTree = "<group>"; };
 		7BE9AC951D7E97DA00CD9A02 /* DiaryBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryBookCell.swift; sourceTree = "<group>"; };
 		7BE9AC971D7EBFB600CD9A02 /* CreateBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBookVC.swift; sourceTree = "<group>"; };
+		7BEBD40D1D810B3F00916CD3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		7BF4A07E1D8259C500C9B990 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,15 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		7B3104261D7FADC7008CC038 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */,
+				7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */,
+			);
+			name = Xib;
+			sourceTree = "<group>";
+		};
 		7B5DFCE41D75864B00DF9BCC = {
 			isa = PBXGroup;
 			children = (
@@ -147,19 +160,18 @@
 		7B5DFCEF1D75864B00DF9BCC /* BmobTest */ = {
 			isa = PBXGroup;
 			children = (
+				7B3104261D7FADC7008CC038 /* Xib */,
 				7BE7BD441D78200F00CA5B05 /* Veiw */,
 				7B0F07A31D76AEB4007C461D /* ViewController */,
 				7B0F079A1D768206007C461D /* Model */,
 				7B5DFCF01D75864B00DF9BCC /* AppDelegate.swift */,
+				7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */,
 				7B5DFCF41D75864B00DF9BCC /* Main.storyboard */,
 				7B5DFCF71D75864B00DF9BCC /* Assets.xcassets */,
 				7B5DFCF91D75864B00DF9BCC /* LaunchScreen.storyboard */,
 				7B5DFCFC1D75864B00DF9BCC /* Info.plist */,
 				7B5DFD041D7586AF00DF9BCC /* BmobTest-Bridging-Header.h */,
 				7B5DFD071D7588E800DF9BCC /* BmobSDK.framework */,
-				7BE7BD491D78240F00CA5B05 /* DiaryCell.xib */,
-				7BDB8FD71D7D7F2A00AC7005 /* Utils.swift */,
-				7BE9AC931D7E7BF000CD9A02 /* DiaryBookCell.xib */,
 			);
 			path = BmobTest;
 			sourceTree = "<group>";
@@ -169,6 +181,8 @@
 			children = (
 				7BE7BD451D78203D00CA5B05 /* DiaryCell.swift */,
 				7BE9AC951D7E97DA00CD9A02 /* DiaryBookCell.swift */,
+				7BEBD40D1D810B3F00916CD3 /* LoadingView.swift */,
+				7BF4A07E1D8259C500C9B990 /* ToastView.swift */,
 			);
 			name = Veiw;
 			sourceTree = "<group>";
@@ -250,7 +264,9 @@
 				7BE7BD461D78203D00CA5B05 /* DiaryCell.swift in Sources */,
 				7BBC28631D7D1EAB0043B586 /* LoginVC.swift in Sources */,
 				7B0F07A21D768C78007C461D /* Comment.swift in Sources */,
+				7BF4A07F1D8259C500C9B990 /* ToastView.swift in Sources */,
 				7B0F07A01D768A3C007C461D /* DiaryBook.swift in Sources */,
+				7BEBD40E1D810B3F00916CD3 /* LoadingView.swift in Sources */,
 				7BDB8FD81D7D7F2A00AC7005 /* Utils.swift in Sources */,
 				7BE9AC981D7EBFB600CD9A02 /* CreateBookVC.swift in Sources */,
 				7BE9AC961D7E97DA00CD9A02 /* DiaryBookCell.swift in Sources */,

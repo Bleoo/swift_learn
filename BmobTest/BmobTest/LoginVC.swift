@@ -43,7 +43,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     func login(email: String, password: String){
         BmobUser.loginInbackgroundWithAccount(email, andPassword: password.MD5) { (user, error) -> Void in
             if user == nil {
-                print("密码错误")
+                let toast = ToastView(text: "密码错误")
+                self.view.addSubview(toast)
             } else {
                 self.navigationController?.popViewControllerAnimated(true)
             }

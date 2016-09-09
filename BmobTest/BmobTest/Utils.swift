@@ -30,6 +30,9 @@ extension String  {
 
 class Utils: AnyObject {
     
+    static let width = UIScreen.mainScreen().bounds.width
+    static let height = UIScreen.mainScreen().bounds.height
+    
     static let dateFormatter = NSDateFormatter()
     
     static func dateFormat(date: NSDate, format: String) -> String {

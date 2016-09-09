@@ -12,19 +12,20 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @IBOutlet weak var books_cv: UICollectionView!
     
-    let width = UIScreen.mainScreen().bounds.width
-    let height = UIScreen.mainScreen().bounds.height
-    
     var diaryBooks = [DiaryBook]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "我的日记本"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "创建", style: UIBarButtonItemStyle.Plain, target: self, action: "createAction")
-        queryDiaryBooks()
+        
         books_cv.dataSource = self
         books_cv.delegate = self
         books_cv.registerNib(UINib(nibName: "DiaryBookCell", bundle: nil), forCellWithReuseIdentifier: "DiaryBook")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        queryDiaryBooks()
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,7 +40,7 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: (width-30)/3, height: height/3)
+        return CGSize(width: (Utils.width-30)/3, height: Utils.height/3)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
