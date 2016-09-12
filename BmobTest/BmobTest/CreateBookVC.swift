@@ -9,12 +9,15 @@
 import UIKit
 
 class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var subject_tf: UITextField!
     @IBOutlet weak var descript_tv: UITextView!
     @IBOutlet weak var unlockTime_tf: UITextField!
     @IBOutlet weak var bookPic_img: UIImageView!
     @IBOutlet weak var isOpen_sw: UISwitch!
+    
+    var diaryBook: DiaryBook?
+    var updateBlock: UpdateList?
     
     var datePicker: UIDatePicker?
     var imagePicker: UIImagePickerController?
@@ -53,9 +56,21 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         let tap = UITapGestureRecognizer(target: self, action: "chooesPic")
         bookPic_img.addGestureRecognizer(tap)
         bookPic_img.userInteractionEnabled = true
+        date = NSDate()
         
+        if diaryBook != nil {
+            initData()
+        }
     }
-
+    
+    func initData(){
+        navigationItem.title = diaryBook?.subject
+        subject_tf.text = diaryBook?.subject
+        descript_tv.text = diaryBook?.descript
+        date = diaryBook?.unlockTime
+        isOpen_sw.on = (diaryBook?.isOpen)!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,21 +92,53 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
             return
         }
         let loading = LoadingView(type: LoadingView.ViewType.dot)
-        DiaryBook.createNewBook(imgData, unlockTime: date!, subject: subject_tf.text!, isOpen: isOpen_sw.on, descript: descript_tv.text) {(isSuccessful, error) -> () in
-            if isSuccessful && error == nil {
+        view.addSubview(loading)
+        if diaryBook == nil {
+            DiaryBook.createNewBook(imgData, unlockTime: date!, subject: subject_tf.text!, isOpen: isOpen_sw.on, descript: descript_tv.text) {(isSuccessful, error) -> () in
                 loading.dismiss()
-                self.navigationController?.popViewControllerAnimated(true)
-            } else {
-                let toast = ToastView(text: error.description)
-                self.view.addSubview(toast)
+                if isSuccessful && error == nil {
+                    if self.updateBlock != nil {
+                        self.updateBlock!()
+                    }
+                    self.navigationController?.popViewControllerAnimated(true)
+                } else {
+                    let toast = ToastView(text: error.description)
+                    self.view.addSubview(toast)
+                }
             }
+        } else {
+            if subject_tf.text! != diaryBook?.subject {
+                diaryBook?.setObject(subject_tf.text!, forKey: "subject")
+            }
+            if descript_tv.text! != diaryBook?.descript {
+                diaryBook?.setObject(descript_tv.text!, forKey: "descript")
+            }
+            if date != diaryBook?.unlockTime {
+                diaryBook?.setObject(date!, forKey: "unlockTime")
+            }
+            if isOpen_sw.on != diaryBook?.isOpen {
+                diaryBook?.setObject(isOpen_sw.on, forKey: "isOpen")
+            }
+            diaryBook?.updateInBackgroundWithResultBlock({ (isSuccessful, error) -> () in
+                if isSuccessful && error == nil {
+                    loading.dismiss()
+                    if self.updateBlock != nil {
+                        self.updateBlock!()
+                    }
+                    self.navigationController?.popViewControllerAnimated(true)
+                } else {
+                    let toast = ToastView(text: error.description)
+                    self.view.addSubview(toast)
+                }
+            })
         }
 //        let loading = LoadingView(type: LoadingView.ViewType.dot)
 //        view.addSubview(loading)
-        // 延时操作
+//        // 延时操作
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(10 * NSEC_PER_SEC)), dispatch_get_main_queue()) { () -> Void in
 //            loading.dismiss()
 //        }
+        
     }
     
     func hideKeyBoard() {
@@ -148,6 +195,6 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         //fileManager.createFileAtPath(filePath!, contents: imageData, attributes: nil)
         imagePicker?.dismissViewControllerAnimated(true, completion: nil)
     }
-
-
+    
+    
 }

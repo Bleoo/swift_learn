@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias UpdateList = () -> ()
+
 class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var books_cv: UICollectionView!
@@ -22,9 +24,6 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         books_cv.dataSource = self
         books_cv.delegate = self
         books_cv.registerNib(UINib(nibName: "DiaryBookCell", bundle: nil), forCellWithReuseIdentifier: "DiaryBook")
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         queryDiaryBooks()
     }
     
@@ -36,7 +35,29 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DiaryBook", forIndexPath: indexPath) as? DiaryBookCell
         let book = diaryBooks[indexPath.row]
         cell?.subject_lab.text = book.subject
+        cell?.bookPic_img.image = UIImage(named: "book")
+        if let url = book.bookPic?.url {
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            // 切到全局队列,这是系统提供的并行队列
+            dispatch_async(queue, { () -> Void in
+                if let nsUrl = NSURL(string: url){
+                    if let img = NSData(contentsOfURL: nsUrl) {
+                        // 切回主队列
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            cell?.bookPic_img.image = UIImage(data: img)
+                        }
+                    }
+                }
+            })
+        }
         return cell!
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let createBookVC = mainSB.instantiateViewControllerWithIdentifier("CreateBookSB") as! CreateBookVC
+        createBookVC.diaryBook = diaryBooks[indexPath.row]
+        navigationController?.pushViewController(createBookVC, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -51,15 +72,18 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         DiaryBook.queryBooksByUserId(BmobUser.currentUser().objectId) { (books, error) -> () in
             if error == nil {
                 self.diaryBooks.removeAll()
-                self.diaryBooks = books
-                self.books_cv.reloadData()
+                self.diaryBooks.appendContentsOf(books)
             }
+            self.books_cv.reloadData()
         }
     }
     
     func createAction(){
         let mainSB = UIStoryboard(name: "Main", bundle: nil)
-        let createBookVC = mainSB.instantiateViewControllerWithIdentifier("CreateBookSB")
+        let createBookVC = mainSB.instantiateViewControllerWithIdentifier("CreateBookSB") as! CreateBookVC
+        createBookVC.updateBlock = { () -> () in
+            self.queryDiaryBooks()
+        }
         navigationController?.pushViewController(createBookVC, animated: true)
     }
 

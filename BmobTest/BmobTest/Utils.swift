@@ -26,6 +26,23 @@ extension String  {
         
         return String(format: hash as String)
     }
+    
+    static func random(length: Int) -> String {
+        var string = String()
+        for _ in 1...length {
+            let number = arc4random() % 36
+            if number < 10 {
+                let figure = arc4random() % 10
+                let tempString = String(format: "%d", figure)
+                string = string.stringByAppendingString(tempString)
+            } else {
+                let figure = (arc4random() % 26) + 97
+                let tempString = String(format: "%c", figure)
+                string = string.stringByAppendingString(tempString)
+            }
+        }
+        return string
+    }
 }
 
 class Utils: AnyObject {
