@@ -32,9 +32,9 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "创建"
-        let saveButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: "saveDiaryBook")
+        let saveButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: #selector(CreateBookVC.saveDiaryBook))
         if diaryBook != nil {
-            let deleteButtonItem  = UIBarButtonItem(title: "删除", style: UIBarButtonItemStyle.Plain, target: self, action: "deleteDiaryBook")
+            let deleteButtonItem  = UIBarButtonItem(title: "删除", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CreateBookVC.deleteDiaryBook))
             deleteButtonItem.tintColor = UIColor.redColor()
             navigationItem.rightBarButtonItems = [saveButtonItem, deleteButtonItem]
         } else {
@@ -48,19 +48,19 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         datePicker = UIDatePicker()
         datePicker?.locale = NSLocale.currentLocale()
         datePicker?.datePickerMode = UIDatePickerMode.Date
-        datePicker?.addTarget(self, action: "getDate", forControlEvents: UIControlEvents.ValueChanged)
+        datePicker?.addTarget(self, action: #selector(CreateBookVC.getDate), forControlEvents: UIControlEvents.ValueChanged)
         unlockTime_tf.inputView = datePicker
         
         let dateToolBar = UIToolbar(frame: CGRectMake(0, 0, Utils.width, 40))
         dateToolBar.backgroundColor = UIColor.lightGrayColor()
-        let doneItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: "hideKeyBoard")
+        let doneItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CreateBookVC.hideKeyBoard))
         let fixible = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         dateToolBar.items = [fixible, doneItem]
         subject_tf.inputAccessoryView = dateToolBar
         descript_tv.inputAccessoryView = dateToolBar
         unlockTime_tf.inputAccessoryView = dateToolBar
         
-        let tap = UITapGestureRecognizer(target: self, action: "chooesPic")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateBookVC.chooesPic))
         bookPic_img.addGestureRecognizer(tap)
         bookPic_img.userInteractionEnabled = true
         date = NSDate()

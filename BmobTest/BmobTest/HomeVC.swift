@@ -19,7 +19,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         navigationItem.title = "首页"
         
-        refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(HomeVC.refreshData), forControlEvents: UIControlEvents.ValueChanged)
         // 背景色和tint颜色都要清除,保证自定义下拉视图高度自适应
         //refreshControl.backgroundColor = UIColor.clearColor()
         //refreshControl.tintColor = UIColor.clearColor()

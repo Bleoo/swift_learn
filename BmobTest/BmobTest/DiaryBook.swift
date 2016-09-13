@@ -30,7 +30,7 @@ class DiaryBook: BmobObject {
         //关联对象表
         let query = BmobQuery(className: "DiaryBook")
         //需要查询的列
-        let user = BmobObject(withoutDataWithClassName: "_User", objectId: userId)
+        let user = BmobObject(outDataWithClassName: "_User", objectId: userId)
         
         query.whereObjectKey("books", relatedTo: user)
         query.orderByDescending("createdAt")
