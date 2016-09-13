@@ -57,6 +57,9 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         let mainSB = UIStoryboard(name: "Main", bundle: nil)
         let createBookVC = mainSB.instantiateViewControllerWithIdentifier("CreateBookSB") as! CreateBookVC
         createBookVC.diaryBook = diaryBooks[indexPath.row]
+        createBookVC.updateBlock = { () -> () in
+            self.queryDiaryBooks()
+        }
         navigationController?.pushViewController(createBookVC, animated: true)
     }
     

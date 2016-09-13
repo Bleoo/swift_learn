@@ -32,7 +32,14 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "创建"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: "saveDiaryBook")
+        let saveButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: "saveDiaryBook")
+        if diaryBook != nil {
+            let deleteButtonItem  = UIBarButtonItem(title: "删除", style: UIBarButtonItemStyle.Plain, target: self, action: "deleteDiaryBook")
+            deleteButtonItem.tintColor = UIColor.redColor()
+            navigationItem.rightBarButtonItems = [saveButtonItem, deleteButtonItem]
+        } else {
+            navigationItem.rightBarButtonItems = [saveButtonItem]
+        }
         
         descript_tv.layer.borderColor = UIColor.lightGrayColor().CGColor
         descript_tv.layer.borderWidth = 0.6
@@ -139,6 +146,22 @@ class CreateBookVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
 //            loading.dismiss()
 //        }
         
+    }
+    
+    func deleteDiaryBook(){
+        if diaryBook != nil {
+            diaryBook?.deleteInBackgroundWithBlock({ (isSuccessful, error) -> Void in
+                if isSuccessful && error == nil {
+                    if self.updateBlock != nil {
+                        self.updateBlock!()
+                    }
+                    self.navigationController?.popViewControllerAnimated(true)
+                } else {
+                    let toast = ToastView(text: "删除失败")
+                    self.view.addSubview(toast)
+                }
+            })
+        }
     }
     
     func hideKeyBoard() {

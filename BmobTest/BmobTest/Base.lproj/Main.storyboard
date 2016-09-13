@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -62,6 +62,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3b1-t1-gLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044" y="976"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ETI-vA-enQ">
+            <objects>
+                <viewController id="3Ad-6m-Xlg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rGB-VJ-5ym"/>
+                        <viewControllerLayoutGuide type="bottom" id="E5d-xw-Elf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yFR-Tx-Yn0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="USy-3j-uEp">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="420"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="D0J-lb-DRI">
+                                <rect key="frame" x="16" y="428" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Epw-nT-VgB"/>
+                                    <constraint firstAttribute="height" constant="120" id="TRb-Jy-UZK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="USy-3j-uEp" firstAttribute="top" secondItem="yFR-Tx-Yn0" secondAttribute="topMargin" id="FSQ-ZS-9Wv"/>
+                            <constraint firstItem="D0J-lb-DRI" firstAttribute="top" secondItem="USy-3j-uEp" secondAttribute="bottom" constant="8" id="NJJ-BN-7so"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="USy-3j-uEp" secondAttribute="trailing" constant="-20" id="Sic-0J-jPu"/>
+                            <constraint firstItem="E5d-xw-Elf" firstAttribute="top" secondItem="D0J-lb-DRI" secondAttribute="bottom" constant="20" id="jae-2k-kNq"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="D0J-lb-DRI" secondAttribute="leading" id="lqg-ut-7j6"/>
+                            <constraint firstItem="USy-3j-uEp" firstAttribute="leading" secondItem="yFR-Tx-Yn0" secondAttribute="leadingMargin" constant="-20" id="yZL-Vy-Vua"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0f-IV-L9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044" y="1659"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="GgQ-pr-ieK">
@@ -327,6 +369,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tNe-nO-shF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2336" y="976"/>
+        </scene>
+        <!--Diary ListVC-->
+        <scene sceneID="UTa-JH-fEz">
+            <objects>
+                <viewController storyboardIdentifier="DiaryListSB" id="mFV-2i-Qfg" customClass="DiaryListVC" customModule="BmobTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cbT-U0-rDH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uzn-53-Qnm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gBg-jw-wfj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aRe-hK-hYt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="diaryList_tb" destination="aRe-hK-hYt" id="iWT-g9-ALA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkg-Qb-L2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2745" y="976"/>
         </scene>
     </scenes>
     <resources>

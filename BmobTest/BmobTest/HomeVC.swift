@@ -13,8 +13,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var diarys_tv: UITableView!
     var refreshControl = UIRefreshControl()
     
-    let dateFormatter = NSDateFormatter()
-    
     var diarys = [Diary]()
     
     override func viewDidLoad() {
@@ -27,9 +25,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //refreshControl.tintColor = UIColor.clearColor()
         refreshControl.attributedTitle = NSAttributedString(string: "最后更新于\(NSDate())")
         diarys_tv.addSubview(refreshControl)
-        
-        dateFormatter.locale = NSLocale.currentLocale()
-        dateFormatter.dateFormat = "HH:mm:ss"
         
         // 查找表
         //queryAll()
@@ -80,7 +75,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let diary = diarys[indexPath.row]
             cell?.user_btn.setTitle(diary.user?.username, forState: UIControlState.Normal)
             cell?.book_btn.setTitle(diary.book?.subject, forState: UIControlState.Normal)
-            cell?.time_lab.text = dateFormatter.stringFromDate(diary.createdAt)
+            cell?.time_lab.text = Utils.dateFormat(diary.createdAt, format: "HH:mm:ss")
             cell?.content_lab.text = diary.content
             
             if let url = diary.user?.icon?.url {
