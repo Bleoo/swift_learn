@@ -19,7 +19,7 @@ class DiaryBooksVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "我的日记本"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "创建", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DiaryBooksVC.createAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "创建", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(createAction))
         
         books_cv.dataSource = self
         books_cv.delegate = self

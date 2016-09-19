@@ -17,9 +17,9 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "首页"
+        navigationItem.title = "动态"
         
-        refreshControl.addTarget(self, action: #selector(HomeVC.refreshData), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshData), forControlEvents: UIControlEvents.ValueChanged)
         // 背景色和tint颜色都要清除,保证自定义下拉视图高度自适应
         //refreshControl.backgroundColor = UIColor.clearColor()
         //refreshControl.tintColor = UIColor.clearColor()
@@ -27,7 +27,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         diarys_tv.addSubview(refreshControl)
         
         // 查找表
-        //queryAll()
+        queryAll()
         
         //User.queryUserById("HUwb4449")
         //DiaryBook.queryBooksByUserId("HUwb4449")
@@ -35,7 +35,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         diarys_tv.dataSource = self
         diarys_tv.delegate = self
-        diarys_tv.estimatedRowHeight = 80.0; // 设置为一个接近“平均”行高的值
+        diarys_tv.estimatedRowHeight = 120.0; // 设置为一个接近“平均”行高的值
         diarys_tv.rowHeight = UITableViewAutomaticDimension; // 设置行高为自动调整高度
     }
     
@@ -44,14 +44,19 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let query = BmobQuery(className: "Diary")
         query.includeKey("user,book")
         query.findObjectsInBackgroundWithBlock { (array, error) in
-            for obj in array{
-                let diary = Diary.convert(obj as! BmobObject)
-                self.diarys.append(diary)
-            }
-            self.diarys_tv.reloadData()
-            if self.refreshControl.refreshing {
-                self.refreshControl.endRefreshing()
-                self.refreshControl.attributedTitle = NSAttributedString(string: "最后更新于\(NSDate())")
+            if error == nil {
+                for obj in array{
+                    let diary = Diary.convert(obj as! BmobObject)
+                    self.diarys.append(diary)
+                }
+                self.diarys_tv.reloadData()
+                if self.refreshControl.refreshing {
+                    self.refreshControl.endRefreshing()
+                    self.refreshControl.attributedTitle = NSAttributedString(string: "最后更新于\(NSDate())")
+                }
+            } else {
+                let netError = ToastView(text: "网络错误\(error.code)")
+                self.view.addSubview(netError)
             }
         }
     }
@@ -66,7 +71,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(indexPath.row)
         var cell = tableView.dequeueReusableCellWithIdentifier("DiaryCell") as? DiaryCell
         if cell == nil {
             cell = DiaryCell(style: .Default, reuseIdentifier: "DiaryCell")
@@ -74,19 +78,35 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if indexPath.row <= diarys.count {
             let diary = diarys[indexPath.row]
             cell?.user_btn.setTitle(diary.user?.username, forState: UIControlState.Normal)
-            cell?.book_btn.setTitle(diary.book?.subject, forState: UIControlState.Normal)
+            cell?.book_btn.setTitle("《"+(diary.book?.subject)!+"》", forState: UIControlState.Normal)
             cell?.time_lab.text = Utils.dateFormat(diary.createdAt, format: "HH:mm:ss")
             cell?.content_lab.text = diary.content
             
-            if let url = diary.user?.icon?.url {
+            if let iconUrl = diary.user?.icon?.url {
                 let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
                 // 切到全局队列,这是系统提供的并行队列
                 dispatch_async(queue, { () -> Void in
-                    if let nsUrl = NSURL(string: url){
+                    if let nsUrl = NSURL(string: iconUrl){
                         if let img = NSData(contentsOfURL: nsUrl) {
                             // 切回主队列
                             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                                 cell?.icon_img.image = UIImage(data: img)
+                            }
+                        }
+                    }
+                })
+            }
+            
+            if let picUrl = diary.picture?.url {
+                cell?.picture_img.image = UIImage(named: "book")
+                let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                // 切到全局队列,这是系统提供的并行队列
+                dispatch_async(queue, { () -> Void in
+                    if let nsUrl = NSURL(string: picUrl){
+                        if let img = NSData(contentsOfURL: nsUrl) {
+                            // 切回主队列
+                            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                                cell?.picture_img.image = UIImage(data: img)
                             }
                         }
                     }

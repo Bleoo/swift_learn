@@ -15,5 +15,6 @@ class DiaryCell: UITableViewCell {
     @IBOutlet weak var book_btn: UIButton!
     @IBOutlet weak var time_lab: UILabel!
     @IBOutlet weak var content_lab: UILabel!
+    @IBOutlet weak var picture_img: UIImageView!
     
 }

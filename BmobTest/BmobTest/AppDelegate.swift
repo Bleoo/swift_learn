@@ -27,12 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let homeVC = mainSB.instantiateViewControllerWithIdentifier("HomeSB") as! HomeVC
         let homeNav = UINavigationController(rootViewController: homeVC)
-        homeNav.tabBarItem.title = "Home"
+        homeNav.tabBarItem.title = "动态"
         tabbarController.addChildViewController(homeNav)
+        
+        let createDiaryVC = mainSB.instantiateViewControllerWithIdentifier("CreateDiarySB") as! CreateDiaryVC
+        let createDiaryNav = UINavigationController(rootViewController: createDiaryVC)
+        createDiaryNav.tabBarItem.title = "写日记"
+        tabbarController.addChildViewController(createDiaryNav)
         
         let userVC = mainSB.instantiateViewControllerWithIdentifier("UserSB") as! UserVC
         let userNav = UINavigationController(rootViewController: userVC)
-        userNav.tabBarItem.title = "User"
+        userNav.tabBarItem.title = "用户"
         tabbarController.addChildViewController(userNav)
         
         window?.makeKeyAndVisible()
@@ -52,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        Bmob.activateSDK()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

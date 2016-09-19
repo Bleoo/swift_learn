@@ -36,12 +36,17 @@ class ToastView: UIView {
         anim.toValue = 0
         anim.duration = 1
         anim.repeatCount = 1
+        // 下面俩句保证remove时不闪烁
+        anim.removedOnCompletion = false
+        anim.fillMode = kCAFillModeForwards
         anim.delegate = self
         layer.addAnimation(anim, forKey: "dismiss")
     }
     
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        removeFromSuperview()
+        if flag {
+            removeFromSuperview()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

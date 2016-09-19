@@ -11,7 +11,7 @@ import Foundation
 class Diary: BmobObject {
     
     var user: User?
-    var picture: String?
+    var picture: BmobFile?
     var isImportant: Bool?
     var content: String?
     var book: DiaryBook?
@@ -38,6 +38,41 @@ class Diary: BmobObject {
             }
         }
         return diarys
+    }
+    
+    static func createDiary(picture: NSData?, isImportant: Bool, content: String, book: DiaryBook, handler: (Bool, NSError!) -> ()){
+        if picture != nil {
+            DiaryBook.uploadFile(picture!) { (isSuccessful, error, pic) in
+                if isSuccessful && error == nil {
+                    insert(pic, isImportant: isImportant, content: content, book: book, handler: handler)
+                } else {
+                    handler(isSuccessful, error)
+                }
+            }
+        } else {
+            insert(nil, isImportant: isImportant, content: content, book: book, handler: handler)
+        }
+    }
+    
+    static func insert(picture: BmobFile?, isImportant: Bool, content: String, book: DiaryBook, handler: (Bool, NSError!) -> ()) {
+        let obj = BmobObject(className: "Diary")
+        obj.setObject(BmobUser.currentUser(), forKey: "user")
+        if picture != nil {
+            obj.setObject(picture, forKey: "picture")
+        }
+        obj.setObject(isImportant, forKey: "isImportant")
+        obj.setObject(content, forKey: "content")
+        obj.setObject(book, forKey: "book")
+        obj.saveInBackgroundWithResultBlock { (isSuccessful, error) in
+            if isSuccessful && error == nil {
+                let relation = BmobRelation()
+                relation.addObject(obj)
+                book.addRelation(relation, forKey: "diarys")
+                book.updateInBackgroundWithResultBlock(handler)
+            } else {
+                handler(isSuccessful, error)
+            }
+        }
     }
     
 }
