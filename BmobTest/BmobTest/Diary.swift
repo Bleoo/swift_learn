@@ -11,6 +11,7 @@ import Foundation
 class Diary: BmobObject {
     
     var user: User?
+    var thumbPicture: BmobFile?
     var picture: BmobFile?
     var isImportant: Bool?
     var content: String?
@@ -40,25 +41,30 @@ class Diary: BmobObject {
         return diarys
     }
     
-    static func createDiary(picture: NSData?, isImportant: Bool, content: String, book: DiaryBook, handler: (Bool, NSError!) -> ()){
+    static func createDiary(picture: NSData?, thumbPicture: NSData?, isImportant: Bool, content: String, book: DiaryBook, handler: (Bool, NSError!) -> ()){
         if picture != nil {
             DiaryBook.uploadFile(picture!) { (isSuccessful, error, pic) in
                 if isSuccessful && error == nil {
-                    insert(pic, isImportant: isImportant, content: content, book: book, handler: handler)
+                    DiaryBook.uploadFile(thumbPicture!, handler: { (isSuccessful, error, thumbPic) in
+                        insert(pic, thumbPicture: thumbPic, isImportant: isImportant, content: content, book: book, handler: handler)
+                    })
                 } else {
                     handler(isSuccessful, error)
                 }
             }
         } else {
-            insert(nil, isImportant: isImportant, content: content, book: book, handler: handler)
+            insert(nil, thumbPicture: nil, isImportant: isImportant, content: content, book: book, handler: handler)
         }
     }
     
-    static func insert(picture: BmobFile?, isImportant: Bool, content: String, book: DiaryBook, handler: (Bool, NSError!) -> ()) {
+    static func insert(picture: BmobFile?, thumbPicture: BmobFile?, isImportant: Bool, content: String, book: DiaryBook, handler: (Bool, NSError!) -> ()) {
         let obj = BmobObject(className: "Diary")
         obj.setObject(BmobUser.currentUser(), forKey: "user")
         if picture != nil {
             obj.setObject(picture, forKey: "picture")
+        }
+        if thumbPicture != nil {
+            obj.setObject(thumbPicture, forKey: "thumbPicture")
         }
         obj.setObject(isImportant, forKey: "isImportant")
         obj.setObject(content, forKey: "content")

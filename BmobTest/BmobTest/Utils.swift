@@ -57,4 +57,49 @@ class Utils: AnyObject {
         dateFormatter.dateFormat = format
         return dateFormatter.stringFromDate(date)
     }
+    
+    static let thumbnailWidth: CGFloat = 120
+    
+    static let maxPictureWidth: CGFloat = 800
+    
+    static func compressImageToThumbnail(sourceImage: UIImage) -> UIImage {
+        let imageSize = sourceImage.size
+        let width = imageSize.width
+        let height = imageSize.height
+        let targetHeight = (thumbnailWidth / width) * height
+        UIGraphicsBeginImageContext(CGSizeMake(thumbnailWidth, targetHeight))
+        sourceImage.drawInRect(CGRectMake(0, 0, thumbnailWidth, targetHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    static func compressImageLowMaxWidth(sourceImage: UIImage) -> UIImage {
+        let imageSize = sourceImage.size
+        let width = imageSize.width
+        let height = imageSize.height
+        if width > maxPictureWidth {
+            let targetHeight = (maxPictureWidth / width) * height
+            UIGraphicsBeginImageContext(CGSizeMake(maxPictureWidth, targetHeight))
+            sourceImage.drawInRect(CGRectMake(0, 0, maxPictureWidth, targetHeight))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return newImage
+        } else {
+            return sourceImage
+        }
+    }
+    
+    static func compressImage(sourceImage: UIImage, targetWidth: CGFloat) -> UIImage {
+        let imageSize = sourceImage.size
+        let width = imageSize.width
+        let height = imageSize.height
+        let targetHeight = (targetWidth / width) * height
+        UIGraphicsBeginImageContext(CGSizeMake(targetWidth, targetHeight))
+        sourceImage.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 }

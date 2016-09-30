@@ -97,7 +97,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 })
             }
             
-            if let picUrl = diary.picture?.url {
+            if let picUrl = diary.thumbPicture?.url {
                 cell?.picture_img.image = UIImage(named: "book")
                 let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
                 // 切到全局队列,这是系统提供的并行队列
@@ -112,8 +112,43 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     }
                 })
             }
+            
+            // 点击事件
+            cell!.user_btn.addTarget(self, action: #selector(userInfo(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            cell?.user_btn.tag = indexPath.row
+            cell!.book_btn.addTarget(self, action: #selector(diaryBookInfo(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            cell?.book_btn.tag = indexPath.row
+            let iconTap = UITapGestureRecognizer(target: self, action: #selector(userInfoFormIcon(_:)))
+            cell?.icon_img.addGestureRecognizer(iconTap)
+            cell?.icon_img.userInteractionEnabled = true
+            cell?.icon_img.tag = indexPath.row
+            let picTap = UITapGestureRecognizer(target: self, action: #selector(displayPicture(_:)))
+            cell?.picture_img.addGestureRecognizer(picTap)
+            cell?.picture_img.userInteractionEnabled = true
+            cell?.picture_img.tag = indexPath.row
         }
         return cell!
+    }
+    
+    func userInfo(sender: UIView){
+        let diary = diarys[sender.tag]
+        print(diary.user?.username)
+    }
+    
+    func userInfoFormIcon(sender: UITapGestureRecognizer){
+        let diary = diarys[sender.view!.tag]
+        print(diary.user?.username)
+    }
+    
+    func diaryBookInfo(sender: UIButton){
+        let book = diarys[sender.tag].book
+        print(book?.subject)
+    }
+    
+    func displayPicture(sender: UITapGestureRecognizer){
+        if let url = diarys[sender.view!.tag].picture?.url {
+            print(url)
+        }
     }
     
     func refreshData() {

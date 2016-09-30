@@ -9,25 +9,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiaryCell" rowHeight="201" id="l2C-us-hMP" customClass="DiaryCell" customModule="BmobTest" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DiaryCell" rowHeight="201" id="l2C-us-hMP" customClass="DiaryCell" customModule="BmobTest" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="632" height="201"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l2C-us-hMP" id="Wwz-5a-1wM">
                 <rect key="frame" x="0.0" y="0.0" width="632" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pNq-Us-8rf">
+                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pNq-Us-8rf">
                         <rect key="frame" x="8" y="8" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="5TA-jX-Uwd"/>
                             <constraint firstAttribute="width" constant="60" id="Br9-S1-AdS"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAF-xi-29n">
-                        <rect key="frame" x="76" y="8" width="43" height="33"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title="Button"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icy-wq-SDz">
                         <rect key="frame" x="127" y="10" width="43" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -39,6 +34,20 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Frp-Kw-oMc">
+                        <rect key="frame" x="76" y="66" width="120" height="118"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="Une-2z-VCF"/>
+                            <constraint firstAttribute="width" constant="120" id="jMP-PK-lY9"/>
+                            <constraint firstAttribute="width" constant="120" id="rOe-VX-4T9"/>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="wJX-nU-wQw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rOe-VX-4T9"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmj-rp-57q">
                         <rect key="frame" x="76" y="41" width="548" height="17"/>
                         <constraints>
@@ -53,20 +62,11 @@
                             </mask>
                         </variation>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Frp-Kw-oMc">
-                        <rect key="frame" x="76" y="64" width="120" height="120"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="Une-2z-VCF"/>
-                            <constraint firstAttribute="width" constant="120" id="jMP-PK-lY9"/>
-                            <constraint firstAttribute="width" constant="120" id="rOe-VX-4T9"/>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="wJX-nU-wQw"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="rOe-VX-4T9"/>
-                            </mask>
-                        </variation>
-                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAF-xi-29n">
+                        <rect key="frame" x="76" y="8" width="43" height="33"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="Button"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Wmj-rp-57q" firstAttribute="top" secondItem="pwD-sz-iSI" secondAttribute="bottom" constant="8" id="46N-dg-62q"/>

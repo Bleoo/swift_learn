@@ -48,7 +48,8 @@ class CreateDiaryVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             }
         }
     }
-    var imgData: NSData?
+    var picData: NSData?
+    var thumbPicData: NSData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +115,7 @@ class CreateDiaryVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     func saveDiary(){
         let loading = LoadingView(type: LoadingView.ViewType.dot)
         view.addSubview(loading)
-        Diary.createDiary(imgData, isImportant: important_sw.on, content: content_tv.text, book: selectedBook!) { (isSuccessful, error) in
+        Diary.createDiary(picData, thumbPicture: thumbPicData, isImportant: important_sw.on, content: content_tv.text, book: selectedBook!) { (isSuccessful, error) in
             loading.dismiss()
             if isSuccessful && error == nil {
                 self.resetView()
@@ -164,7 +165,10 @@ class CreateDiaryVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picture_img.image = image
-        imgData = UIImageJPEGRepresentation(picture_img.image!, 1.0)
+        let tImage = Utils.compressImageLowMaxWidth(image)
+        picData = UIImageJPEGRepresentation(tImage, 1.0)
+        let thumbImage = Utils.compressImageToThumbnail(image)
+        thumbPicData = UIImageJPEGRepresentation(thumbImage, 1.0)
         imagePicker?.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -201,7 +205,8 @@ class CreateDiaryVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         picture_img.image = UIImage(named: "book")
         important_sw.on = false
         selectedBook = nil
-        imgData = nil
+        picData = nil
+        thumbPicData = nil
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
