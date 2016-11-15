@@ -62,6 +62,7 @@ class Utils: AnyObject {
     
     static let maxPictureWidth: CGFloat = 800
     
+    // 限定最小宽度
     static func compressImageToThumbnail(sourceImage: UIImage) -> UIImage {
         let imageSize = sourceImage.size
         let width = imageSize.width
@@ -74,6 +75,7 @@ class Utils: AnyObject {
         return newImage
     }
     
+    // 限定最宽缩放
     static func compressImageLowMaxWidth(sourceImage: UIImage) -> UIImage {
         let imageSize = sourceImage.size
         let width = imageSize.width
@@ -90,6 +92,7 @@ class Utils: AnyObject {
         }
     }
     
+    // 按宽度比缩放
     static func compressImage(sourceImage: UIImage, targetWidth: CGFloat) -> UIImage {
         let imageSize = sourceImage.size
         let width = imageSize.width
@@ -100,6 +103,15 @@ class Utils: AnyObject {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
+    }
+    
+    // 按大小缩放，效果不行
+    static func compressImageTolow(sourceImage: UIImage) -> UIImage {
+        var data = UIImageJPEGRepresentation(sourceImage, 1.0);
+        if (data!.length>100) {
+            data = UIImageJPEGRepresentation(sourceImage, CGFloat(100 / data!.length))!;
+        }
+        return UIImage(data: data!)!;
     }
     
 }

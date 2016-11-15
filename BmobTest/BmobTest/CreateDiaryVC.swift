@@ -67,6 +67,9 @@ class CreateDiaryVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         picture_img.addGestureRecognizer(tap)
         picture_img.userInteractionEnabled = true
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         let user = BmobUser.currentUser()
         if user != nil {
             DiaryBook.queryBooksByUserId(user.objectId) { (books, error) in
@@ -167,7 +170,7 @@ class CreateDiaryVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         picture_img.image = image
         let tImage = Utils.compressImageLowMaxWidth(image)
         picData = UIImageJPEGRepresentation(tImage, 1.0)
-        let thumbImage = Utils.compressImageToThumbnail(image)
+        let thumbImage = Utils.compressImageTolow(image)
         thumbPicData = UIImageJPEGRepresentation(thumbImage, 1.0)
         imagePicker?.dismissViewControllerAnimated(true, completion: nil)
     }
